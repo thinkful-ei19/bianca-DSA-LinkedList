@@ -164,22 +164,26 @@ class DoublyLinkedList {
         }
         else {
             let currNode = this.head;
-            let previousNode = this.head
+            let previousNode = this.head;
+           
             while(currNode.value !== key){
                 
                 previousNode = currNode;
                 currNode=currNode.next;
             }
-            let newItem = new _Node(item, next, prev);
+            let newItem = new _Node(item, currNode, previousNode);
             previousNode.next = newItem;
-            newItem.next = currNode;
+            
         }
     }
-
-
-
-
-
+    insertAfter(item, key){
+    }
+    insertAt(item, position){
+    }
+    find(item){
+    }
+    remove(item){
+    }
 
 }
 
@@ -343,7 +347,8 @@ function main(){
     DLL.insertLast('Gemenon');
     DLL.insertLast('Pico');
     DLL.insertLast('Sagittarion');
-    SLL.insertBefore('Athena', 'Pico');
+    DLL.insertBefore('Athena', 'Sagittarion');
+    DLL.remove('Pico')
     console.log(DLL);
 
    
