@@ -33,6 +33,57 @@ class LinkedList {
             //set the new nodes pointer to null
         }
     }
+    insertBefore(item, key){
+        if(this.head === null){
+            this.insertFirst(item);
+        }
+        else {
+            let currNode = this.head;
+            let previousNode = this.head
+            while(currNode.value !== key){
+                
+                previousNode = currNode;
+                currNode=currNode.next;
+            }
+            let newItem = new _Node(item);
+            previousNode.next = newItem;
+            newItem.next = currNode;
+        }
+    }
+    insertAfter(item, key){
+        if(this.head === null){
+            this.insertFirst(item);
+        }
+        else{
+            let currNode = this.head;
+            let nextNode = this.head;
+            while(currNode.value !== key){
+                currNode = nextNode;
+                nextNode = nextNode.next;
+            }
+            let newItem = new _Node(item);
+            currNode.next = newItem;
+            newItem.next = nextNode;
+        }
+    }
+    insertAt(item, position){
+        if(this.head === null){
+            this.insertFirst(item);
+        }
+        else{
+            let currNode = this.head;
+            let previousNode = this.head;
+            let counter = 0;
+            while(counter !== position){
+                previousNode = currNode;
+                currNode = currNode.next;
+                counter++;
+            }
+            let newItem = new _Node(item);
+            previousNode.next = newItem;
+            newItem.next = currNode;
+        }
+    }
     //retrieval
     find(item){
         //start at the head
@@ -81,4 +132,23 @@ class LinkedList {
         }
         previousNode.next = currNode.next;
     }
+
 }
+
+function main(){
+    const SLL = new LinkedList();
+    SLL.insertFirst('Apollo');
+    SLL.insertLast('Boomer');
+    SLL.insertLast('Helo');
+    SLL.insertLast('Husker');
+    SLL.insertLast('Starbuck');
+    SLL.insertLast('Tauhida');
+    SLL.remove('squirrel');
+    SLL.insertBefore('Athena', 'Boomer');
+    SLL.insertAfter('Hotdog', 'Helo');
+    SLL.insertAt('Kat', 2);
+    SLL.remove('Tauhida');
+    console.log(JSON.stringify(SLL, null, 2))
+   
+}
+main();
