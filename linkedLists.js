@@ -4,7 +4,6 @@ class _Node {
     constructor(value, next, prev) {
         this.value = value;
         this.next = next;
-        this.prev = prev;
     }
 }
 class LinkedList {
@@ -132,57 +131,6 @@ class LinkedList {
             return;
         }
         previousNode.next = currNode.next;
-    }
-
-}
-class DoublyLinkedList {
-    constructor(){
-        this.head = null;
-        this.tail = null;
-    }
-    insertFirst(item){
-        this.head = new _Node(item, this.head);
-        this.tail = this.head;
-    }
-    insertLast(item){
-        if(!this.head){
-            this.insertFirst(item);
-        }
-        else{
-            let tempNode = this.head;
-            while(tempNode.next !== null){
-                tempNode = tempNode.next;
-            }
-            tempNode.next = new _Node(item, null, tempNode);
-            this.tail = tempNode.next
-        }
-
-    }
-    insertBefore(item, key){
-        if(!this.head){
-            this.insertFirst(item);
-        }
-        else {
-            let currNode = this.head;
-            let previousNode = this.head;
-           
-            while(currNode.value !== key){
-                
-                previousNode = currNode;
-                currNode=currNode.next;
-            }
-            let newItem = new _Node(item, currNode, previousNode);
-            previousNode.next = newItem;
-            
-        }
-    }
-    insertAfter(item, key){
-    }
-    insertAt(item, position){
-    }
-    find(item){
-    }
-    remove(item){
     }
 
 }
